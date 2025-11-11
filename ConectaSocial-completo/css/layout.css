@@ -1,0 +1,773 @@
+/* =====================================================
+   LAYOUT PRINCIPAL: GRID + HEADER + HERO + COMPONENTES
+   ===================================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--cor-fundo, #f5f8fc);
+  color: var(--cor-texto, #222);
+  font-family: var(--font-base, 'Inter', system-ui, sans-serif);
+  line-height: 1.6;
+}
+
+/* =============================
+   CONTAINERS E GRID
+   ============================= */
+.container {
+  width: min(1100px, 92%);
+  margin-inline: auto;
+}
+
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--sp-2, 1rem);
+}
+
+.gap-3 { gap: var(--sp-3, 1.5rem); }
+.center { text-align: center; }
+
+.col-span-12 { grid-column: span 12; }
+.col-md-7 { grid-column: span 7; }
+.col-md-5 { grid-column: span 5; }
+.col-md-6 { grid-column: span 6; }
+.col-md-4 { grid-column: span 4; }
+.col-lg-4 { grid-column: span 4; }
+
+/* =====================================================
+   HEADER E NAVBAR MODERNO E ALINHADO
+   ===================================================== */
+
+.site-header {
+  background: var(--cor-primaria-escura, #0a2540);
+  color: var(--cor-texto-invertido, #fff);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: background 0.4s ease, box-shadow 0.3s ease;
+}
+
+.site-header.scrolled {
+  background: rgba(7, 59, 58, 0.92);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Barra principal */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 1rem;
+}
+
+/* Marca e logo */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: var(--cor-texto-invertido);
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 0.4px;
+  transition: opacity 0.25s ease;
+}
+
+.brand:hover { opacity: 0.9; }
+
+.logo {
+  height: 42px;
+  width: auto;
+  display: block;
+  transition: transform 0.25s ease;
+}
+
+.logo:hover { transform: scale(1.05); }
+
+/* Links da navbar (centro) */
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+/* estilo padrão dos links */
+.nav-links a,
+.nav-links .dropdown-toggle {
+  color: var(--cor-texto-invertido);
+  font-weight: 500;
+  text-decoration: none;
+  position: relative;
+  letter-spacing: 0.3px;
+  transition: color 0.25s ease;
+  background: none;
+  border: 0;
+  padding: .35rem .6rem;
+  border-radius: 8px;
+}
+
+/* efeito de sublinhado para links normais (não-dropdown toggle) */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: var(--cor-secundaria);
+  border-radius: 2px;
+  transition: width 0.25s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a[aria-current="page"]::after {
+  width: 100%;
+}
+
+.nav-links a:hover,
+.nav-links .dropdown-toggle:hover {
+  color: var(--cor-secundaria);
+}
+
+/* =============================
+   MENU DROPDOWN
+   ============================= */
+.has-dropdown { position: relative; }
+
+.dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  cursor: pointer;
+  background: none;
+  color: var(--cor-texto-invertido);
+  font-weight: 500;
+  font-size: 1rem;
+  padding: .35rem .6rem;
+  border-radius: 8px;
+  border: 0;
+}
+
+.dropdown-toggle::after {
+  content: "▼";
+  display: inline-block;
+  font-size: .65rem;
+  margin-left: 4px;
+  opacity: 0.75;
+  transform-origin: center;
+  transition: transform .25s ease, opacity .25s ease;
+}
+
+.has-dropdown:hover .dropdown-toggle::after,
+.has-dropdown:focus-within .dropdown-toggle::after {
+  transform: rotate(180deg);
+  opacity: 1;
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background: var(--cor-superficie, #fff);
+  border: 1px solid var(--cor-borda, #dcdfe6);
+  border-radius: 12px;
+  padding: var(--sp-2, 1rem);
+  display: none;
+  min-width: 220px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+  z-index: 999;
+  animation: dropdownFade .22s ease forwards;
+}
+
+@keyframes dropdownFade {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.has-dropdown:hover .dropdown,
+.has-dropdown:focus-within .dropdown {
+  display: block;
+}
+
+.dropdown a {
+  display: block;
+  padding: .45rem .6rem;
+  color: var(--cor-texto);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background .18s ease, color .18s ease;
+}
+
+.dropdown a:hover,
+.dropdown a:focus {
+  background: var(--cor-fundo);
+  color: var(--cor-primaria);
+}
+
+/* Botão de contraste */
+.contrast-btn {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.22);
+  color: var(--cor-texto-invertido);
+  padding: 0.45rem .7rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1.05rem;
+  transition: all .22s ease;
+}
+
+.contrast-btn:hover {
+  background: var(--cor-secundaria);
+  color: var(--cor-primaria-escura);
+  box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+}
+
+/* =====================================================
+   MENU HAMBÚRGUER E RESPONSIVIDADE
+   ===================================================== */
+.hamburger {
+  background: none;
+  border: none;
+  color: var(--cor-texto-invertido);
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  margin-left: auto;
+  display: none;
+}
+
+.hamburger:hover { transform: scale(1.15); }
+
+@media (max-width: 1024px) {
+  .hamburger { display: block; }
+  .nav-links { display: none; }
+
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 64px;
+    right: 1rem;
+    background: var(--cor-primaria-escura);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    gap: .75rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    z-index: 999;
+    min-width: 220px;
+  }
+
+  .nav-links.open .has-dropdown .dropdown {
+    position: static;
+    display: none;
+    background: transparent;
+    border: 0;
+    padding: 0;
+  }
+
+  .nav-links.open .has-dropdown.open .dropdown {
+    display: block;
+    background: var(--cor-superficie);
+    padding: .6rem;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0,0,0,.12);
+    margin-top: .5rem;
+  }
+
+  .navbar { justify-content: space-between; gap: .5rem; }
+}
+
+@media (min-width: 1025px) {
+  .hamburger { display: none !important; }
+}
+
+/* =====================================================
+   HERO RESPONSIVO
+   ===================================================== */
+.hero {
+  background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
+  color: var(--cor-texto-invertido);
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  align-items: center;
+  gap: var(--sp-4, 2rem);
+  padding: var(--sp-6, 3rem) 0;
+  background-size: 200% 200%;
+  animation: gradientShift 10s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.hero-text {
+  grid-column: span 7;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--sp-3);
+}
+
+.hero-text h1 {
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  line-height: 1.12;
+  font-weight: 800;
+  margin-bottom: var(--sp-2);
+}
+
+.hero-text p {
+  font-size: 1.05rem;
+  max-width: 540px;
+  margin-bottom: var(--sp-3);
+  color: rgba(255,255,255,0.95);
+}
+
+.hero-text .btn { align-self: flex-start; }
+
+.hero-media {
+  grid-column: span 5;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-media img {
+  width: 100%;
+  height: auto;
+  max-width: 600px;
+  border-radius: 12px;
+  object-fit: cover;
+  display: block;
+}
+
+/* =====================================================
+   GRID DE PROJETOS (alinhamento e fluidez)
+   ===================================================== */
+
+main.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+body.projetos main.container .grid-12.gap-3,
+main.container section.grid-12.gap-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+  justify-content: center;
+  align-items: start;
+  justify-items: center;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--cor-superficie);
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  overflow: hidden;
+  transition: transform .25s ease, box-shadow .25s ease;
+  width: 100%;
+  max-width: 350px;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+}
+
+.card-media {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: .8rem;
+  text-align: left;
+}
+
+.card-body h2 {
+  font-size: 1.2rem;
+  color: var(--cor-primaria-escura);
+  margin: 0;
+}
+
+.card-body p {
+  color: var(--cor-texto);
+  font-size: 1rem;
+  margin: 0 0 .6rem 0;
+}
+
+/* =====================================================
+   FORMULÁRIO / TELA DE CADASTRO
+   ===================================================== */
+
+body.cadastro main.container {
+  max-width: 800px;
+  margin: 3rem auto;
+  background: var(--cor-superficie);
+  padding: 2rem 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+body.cadastro h1 {
+  text-align: center;
+  color: var(--cor-primaria-escura);
+  font-size: 2rem;
+  margin-bottom: 1.2rem;
+}
+
+body.cadastro p {
+  text-align: center;
+  color: var(--cor-texto);
+  margin-bottom: 2rem;
+}
+
+body.cadastro fieldset {
+  border: 1px solid var(--cor-borda);
+  border-radius: 12px;
+  margin-bottom: 1.25rem;
+  padding: 1.25rem;
+  background: #fff;
+}
+
+body.cadastro legend {
+  font-weight: 600;
+  color: var(--cor-primaria-escura);
+  padding: 0 .5rem;
+}
+
+body.cadastro label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: .4rem;
+  color: var(--cor-texto);
+}
+
+body.cadastro input,
+body.cadastro select,
+body.cadastro textarea {
+  width: 100%;
+  padding: .6rem .8rem;
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: var(--font-base);
+  box-sizing: border-box;
+  transition: border-color .22s ease, box-shadow .22s ease;
+  background: #fff;
+}
+
+body.cadastro input:focus,
+body.cadastro select:focus,
+body.cadastro textarea:focus {
+  border-color: var(--cor-secundaria);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(7,59,58,0.12);
+}
+
+body.cadastro .inline-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+body.cadastro textarea { min-height: 80px; resize: vertical; }
+
+body.cadastro button,
+body.cadastro input[type="submit"] {
+  display: block;
+  margin: 2rem auto 0;
+  background: var(--cor-secundaria);
+  color: var(--cor-primaria-escura);
+  border: none;
+  padding: .75rem 1.8rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+body.cadastro button:hover,
+body.cadastro input[type="submit"]:hover {
+  background: var(--cor-primaria);
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+/* =====================================================
+   RESPONSIVIDADE ADICIONAL
+   ===================================================== */
+
+@media (max-width: 1024px) {
+  /* painel mobile já definido acima */
+  .hero { grid-template-columns: 1fr; text-align: center; }
+  .hero-text, .hero-media { grid-column: span 12; }
+  .hero-media { margin-top: var(--sp-4); }
+
+  /* cards menor altura de imagem */
+  .card-media { height: 200px; }
+}
+
+@media (max-width: 768px) {
+  h1 { font-size: 2rem; }
+  .btn { width: 100%; text-align: center; }
+  body.cadastro main.container { padding: 1.5rem; }
+  body.cadastro h1 { font-size: 1.7rem; }
+  body.projetos main.container .grid-12.gap-3,
+  main.container section.grid-12.gap-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========================================
+   LINK DE ACESSIBILIDADE (Skip Link)
+   ======================================== */
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+}
+
+.skip-link:focus {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  background: var(--cor-primaria-escura);
+  color: #fff;
+  padding: .6rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  z-index: 9999;
+}
+/* =====================================================
+   SEÇÃO: SOBRE, CONTATO, RODAPÉ (versão aprimorada)
+   ===================================================== */
+
+/* ====== Seção sobre ====== */
+.sobre {
+  padding: 4rem 0 3rem;
+}
+
+.sobre h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: var(--cor-primaria-escura);
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.sobre h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--cor-secundaria);
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
+}
+
+.sobre .card {
+  background: var(--cor-superficie);
+  padding: 1.8rem;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.sobre .card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14);
+}
+
+.sobre .card h3 {
+  color: var(--cor-primaria);
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.sobre .card p {
+  color: var(--cor-texto);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* ====== Seção Contato ====== */
+.contato {
+  margin-top: 5rem;
+  padding: 3.5rem 0 4rem;
+  background: linear-gradient(180deg, #f2f7fb 0%, #e8f0f5 100%);
+  border-top: 4px solid var(--cor-secundaria);
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.contato h2 {
+  font-size: 1.9rem;
+  color: var(--cor-primaria-escura);
+  margin-bottom: 2rem;
+}
+
+.contato p {
+  margin: 0.4rem 0;
+  font-size: 1rem;
+  color: var(--cor-texto);
+}
+
+.contato a {
+  color: var(--cor-secundaria);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+
+.contato a:hover {
+  color: var(--cor-primaria);
+  text-shadow: 0 0 8px rgba(72, 187, 120, 0.4);
+}
+
+/* ====== Rodapé (versão aprimorada e mais legível) ====== */
+.site-footer {
+  background: linear-gradient(180deg, var(--cor-primaria-escura) 0%, #061a2b 100%);
+  color: var(--cor-texto-invertido);
+  text-align: center;
+  padding: 1.6rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-top: 3px solid var(--cor-secundaria);
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.25);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.site-footer p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.96); /* mais contraste */
+  letter-spacing: 0.4px;
+}
+
+.site-footer a {
+  color: var(--cor-secundaria);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.site-footer a:hover {
+  color: #fff;
+}
+
+/* ====== Versão Dark Mode ====== */
+body.dark-mode .site-footer {
+  background: linear-gradient(180deg, #0b1320 0%, #030914 100%);
+  border-top: 3px solid var(--cor-secundaria);
+}
+
+body.dark-mode .site-footer p {
+  color: rgba(255, 255, 255, 0.98);
+}
+
+/* ====== Responsivo ====== */
+@media (max-width: 768px) {
+  .sobre { padding: 3rem 0 2rem; }
+  .contato { padding: 2.5rem 1rem; }
+  .site-footer {
+    font-size: 0.85rem;
+    padding: 1rem;
+  }
+}
+/* =====================================================
+   AJUSTE DO RODAPÉ ESPECÍFICO PARA PÁGINA DE CADASTRO
+   ===================================================== */
+
+body.cadastro .site-footer {
+  background: linear-gradient(180deg, var(--cor-primaria-escura) 0%, #081e35 100%);
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  border-top: 3px solid var(--cor-secundaria);
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.25);
+}
+
+body.cadastro .site-footer p {
+  opacity: 1;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+  color: #f1f5f9;
+}
+
+body.cadastro .site-footer a {
+  color: var(--cor-secundaria);
+  text-decoration: none;
+}
+
+body.cadastro .site-footer a:hover {
+  text-decoration: underline;
+}
+/* =====================================================
+   CORREÇÃO VISUAL DO HEADER / BOTÃO DARK MODE - PADRÃO GLOBAL
+   ===================================================== */
+
+/* Mantém o header idêntico em todas as páginas */
+body.cadastro .site-header {
+  background: var(--cor-primaria-escura) !important;
+  color: var(--cor-texto-invertido);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Unifica o botão de contraste com as outras páginas */
+body.cadastro .contrast-btn {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: var(--cor-texto-invertido);
+  padding: 0.45rem 0.7rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1.05rem;
+  transition: all 0.22s ease;
+}
+
+body.cadastro .contrast-btn:hover {
+  background: var(--cor-secundaria);
+  color: var(--cor-primaria-escura);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* Corrige possíveis margens extras */
+body.cadastro .navbar {
+  padding: 1rem 2rem !important;
+  margin: 0 auto;
+  max-width: 1200px;
+}

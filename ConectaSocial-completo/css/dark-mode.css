@@ -1,0 +1,123 @@
+/* =====================================================
+   ConectaSocial - Dark Mode (modo escuro)
+   ===================================================== */
+
+/* 
+   O modo escuro é ativado quando o body recebe a classe:
+   body.dark-mode
+   (Controlado via accessibility.js)
+*/
+
+body.dark-mode {
+  /* =====================================================
+     PALETA DE CORES ESCURAS
+     ===================================================== */
+  --cor-fundo: #0b0f1a;            /* fundo geral */
+  --cor-superficie: #111827;       /* cartões, seções, inputs */
+  --cor-borda: #1f2937;            /* bordas e divisores */
+
+  --cor-texto: #e5e7eb;            /* texto principal */
+  --cor-texto-invertido: #0b0f1a;  /* textos sobre áreas claras */
+
+  --cor-primaria: #60a5fa;         /* azul principal */
+  --cor-primaria-escura: #1f2a44;  /* azul mais escuro para cabeçalho */
+  --cor-secundaria: #34d399;       /* verde secundário */
+  --cor-secundaria-escura: #065f46;
+
+  --cor-info: #3b82f6;
+  --cor-alerta: #f59e0b;
+  --cor-erro: #ef4444;
+  --cor-sucesso: #10b981;
+
+  /* =====================================================
+     COMPLEMENTARES
+     ===================================================== */
+  --cor-sombra: rgba(255, 255, 255, 0.05);
+  --cor-sombra-forte: rgba(255, 255, 255, 0.1);
+  --cor-overlay: rgba(0, 0, 0, 0.6);
+
+  /* =====================================================
+     TRANSIÇÃO SUAVE ENTRE TEMAS
+     ===================================================== */
+  transition: background 0.4s ease, color 0.3s ease;
+}
+
+/* =====================================================
+   AJUSTES ESPECÍFICOS DE COMPONENTES
+   ===================================================== */
+
+/* Header e footer */
+body.dark-mode .site-header,
+body.dark-mode .site-footer {
+  background: var(--cor-primaria-escura);
+  color: var(--cor-texto);
+  box-shadow: 0 2px 6px var(--cor-sombra-forte);
+}
+
+/* Dropdowns */
+body.dark-mode .dropdown {
+  background: var(--cor-superficie);
+  border-color: var(--cor-borda);
+  box-shadow: 0 8px 16px var(--cor-sombra);
+}
+
+/* Botão de contraste */
+body.dark-mode .contrast-btn {
+  background: rgba(255,255,255,0.1);
+  color: var(--cor-texto);
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+/* Links, hover e foco */
+body.dark-mode a,
+body.dark-mode .nav-links a {
+  color: var(--cor-texto);
+}
+
+body.dark-mode a:hover,
+body.dark-mode .nav-links a:hover {
+  color: var(--cor-secundaria);
+}
+
+/* Campos de formulário */
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode textarea {
+  background: var(--cor-superficie);
+  color: var(--cor-texto);
+  border: 1px solid var(--cor-borda);
+}
+
+/* Cards e containers */
+body.dark-mode .card,
+body.dark-mode main.container,
+body.dark-mode body.cadastro main.container {
+  background: var(--cor-superficie);
+  box-shadow: 0 6px 16px var(--cor-sombra-forte);
+}
+
+/* Hero section (mantém contraste) */
+body.dark-mode .hero {
+  background: linear-gradient(135deg, var(--cor-primaria), var(--cor-secundaria));
+  color: var(--cor-texto-invertido);
+}
+
+/* Botões principais */
+body.dark-mode button,
+body.dark-mode input[type="submit"] {
+  background: var(--cor-secundaria);
+  color: var(--cor-texto-invertido);
+}
+
+body.dark-mode button:hover,
+body.dark-mode input[type="submit"]:hover {
+  background: var(--cor-primaria);
+  color: #fff;
+}
+
+/* =====================================================
+   TRANSIÇÃO GLOBAL
+   ===================================================== */
+body.dark-mode, body.dark-mode * {
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}

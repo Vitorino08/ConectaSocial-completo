@@ -1,0 +1,167 @@
+/* =====================================================
+   CONECTASOCIAL - ESTILO GLOBAL E ACABAMENTO VISUAL
+   ===================================================== */
+
+/* Importa os módulos principais */
+@import url('variables.css');
+@import url('components.css');
+@import url('layout.css');
+
+/* =====================================================
+   AJUSTES DE CONTRASTE, TIPOGRAFIA E TRANSIÇÕES
+   ===================================================== */
+
+/* Tipografia e base visual */
+body {
+  font-family: var(--font-base);
+  line-height: 1.65;
+  color: var(--cor-texto);
+  background-color: var(--cor-fundo);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: 700;
+  color: var(--cor-primaria-escura);
+  transition: color 0.3s ease;
+}
+
+p {
+  color: var(--cor-texto);
+  transition: color 0.3s ease;
+}
+
+/* Links globais */
+a {
+  color: var(--cor-secundaria);
+  text-decoration: none;
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+
+a:hover {
+  color: var(--cor-primaria);
+  text-shadow: 0 0 6px rgba(72, 187, 120, 0.35);
+}
+
+/* =====================================================
+   BOTÕES
+   ===================================================== */
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.btn-primario {
+  background: var(--cor-secundaria);
+  color: var(--cor-primaria-escura);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primario:hover {
+  background: var(--cor-primaria);
+  color: #fff;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+.btn-secundario {
+  background: transparent;
+  color: var(--cor-primaria-escura);
+  border: 2px solid var(--cor-secundaria);
+}
+
+.btn-secundario:hover {
+  background: var(--cor-secundaria);
+  color: var(--cor-primaria-escura);
+  transform: translateY(-2px);
+}
+
+/* =====================================================
+   SOMBRAS E ELEMENTOS ELEVADOS
+   ===================================================== */
+.card, .sobre .card {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover, .sobre .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* =====================================================
+   DARK MODE TRANSIÇÕES SUAVES
+   ===================================================== */
+body.dark-mode {
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+body.dark-mode h1, 
+body.dark-mode h2, 
+body.dark-mode h3, 
+body.dark-mode h4 {
+  color: var(--cor-secundaria);
+}
+
+body.dark-mode a:hover {
+  text-shadow: 0 0 10px rgba(96, 165, 250, 0.5);
+}
+
+/* =====================================================
+   DETALHES FINAIS
+   ===================================================== */
+
+/* Scrollbar personalizada (moderna e leve) */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cor-fundo);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--cor-secundaria);
+  border-radius: 8px;
+  border: 2px solid var(--cor-fundo);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--cor-primaria);
+}
+
+/* Pequena animação nos focos */
+*:focus-visible {
+  outline: 2px solid var(--cor-secundaria);
+  outline-offset: 2px;
+  transition: outline-color 0.2s ease;
+}
+
+/* Animação suave ao carregar seções */
+section, footer {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeIn 0.8s ease forwards;
+  animation-delay: 0.1s;
+}
+
+.hero {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

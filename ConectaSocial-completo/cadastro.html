@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!-- ============================= -->
+  <!-- Metadados -->
+  <!-- ============================= -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- ============================= -->
+  <!-- SEO -->
+  <!-- ============================= -->
+  <title>ConectaSocial | Cadastro</title>
+  <meta name="description" content="Cadastre-se no ConectaSocial para participar de projetos, apoiar ONGs e receber certificados de voluntariado.">
+  <meta name="keywords" content="cadastro ONG, voluntário, doador, inscrição social, ConectaSocial, participação cidadã">
+  <link rel="canonical" href="https://www.conectasocial.org/cadastro.html">
+
+  <!-- ============================= -->
+  <!-- Open Graph -->
+  <!-- ============================= -->
+  <meta property="og:title" content="ConectaSocial - Cadastro de Voluntários e Doadores">
+  <meta property="og:description" content="Junte-se à rede de solidariedade do ConectaSocial e participe de ações que transformam vidas.">
+  <meta property="og:image" content="imagens/logo.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.conectasocial.org/cadastro.html">
+
+  <!-- ============================= -->
+  <!-- Twitter Card -->
+  <!-- ============================= -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ConectaSocial - Cadastro">
+  <meta name="twitter:description" content="Participe como voluntário ou doador em projetos reais e transformadores.">
+  <meta name="twitter:image" content="imagens/logo.jpg">
+
+  <!-- ============================= -->
+  <!-- Favicon -->
+  <!-- ============================= -->
+  <link rel="icon" href="imagens/logo.jpg" type="image/png">
+  <link rel="apple-touch-icon" href="imagens/logo.jpg">
+  <meta name="theme-color" content="#0a3d62">
+
+  <!-- ============================= -->
+  <!-- Fonts e CSS -->
+  <!-- ============================= -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dark-mode.css">
+</head>
+
+<body class="cadastro">
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- ============================= -->
+  <!-- CABEÇALHO -->
+  <!-- ============================= -->
+  <header class="site-header">
+    <nav class="navbar" aria-label="Menu principal">
+
+      <!-- LOGO -->
+      <a class="brand" href="index.html">
+        <img src="imagens/logo.png" alt="Logo ConectaSocial" class="logo" />
+        <span class="brand-name">ConectaSocial</span>
+      </a>
+
+      <!-- BOTÃO MENU MOBILE -->
+      <button id="btn-hamburger" class="hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-principal">
+        ☰
+      </button>
+
+      <!-- LINKS PRINCIPAIS -->
+      <ul id="menu-principal" class="nav-links" role="menubar">
+        <li role="none">
+          <a role="menuitem" href="index.html">Início</a>
+        </li>
+
+        <!-- MENU DROPDOWN - PROJETOS -->
+        <li class="has-dropdown" role="none">
+          <a href="projetos.html" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" role="menuitem">
+            Projetos
+          </a>
+          <ul class="dropdown" role="menu">
+            <li role="none"><a role="menuitem" href="projetos.html">Todos os projetos</a></li>
+            <li role="none"><a role="menuitem" href="projetos.html#ambiental">Ambiental</a></li>
+            <li role="none"><a role="menuitem" href="projetos.html#educacao">Educação</a></li>
+          </ul>
+        </li>
+
+        <li role="none">
+          <a role="menuitem" href="cadastro.html" aria-current="page">Cadastro</a>
+        </li>
+      </ul>
+
+      <!-- BOTÃO DO MODO ESCURO -->
+      <button id="toggle-contrast" class="contrast-btn" aria-label="Alternar modo escuro">🌙</button>
+    </nav>
+  </header>
+
+  <!-- ============================= -->
+  <!-- CONTEÚDO PRINCIPAL -->
+  <!-- ============================= -->
+  <main id="conteudo" tabindex="-1" class="container">
+    <section class="form-section">
+      <h1>Cadastro de Participante</h1>
+      <p>Preencha o formulário abaixo para se cadastrar como <strong>voluntário</strong> ou <strong>doador</strong>.</p>
+
+      <form id="formCadastro" novalidate>
+        <!-- Informações Pessoais -->
+        <fieldset>
+          <legend>Informações Pessoais</legend>
+          <div class="inline-group">
+            <div>
+              <label for="nome">Nome completo</label>
+              <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required />
+            </div>
+
+            <div>
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required />
+            </div>
+          </div>
+
+          <div class="inline-group">
+            <div>
+              <label for="cpf">CPF</label>
+              <input type="text" id="cpf" name="cpf" inputmode="numeric" maxlength="14" placeholder="000.000.000-00" required />
+            </div>
+
+            <div>
+              <label for="telefone">Telefone</label>
+              <input type="tel" id="telefone" name="telefone" inputmode="tel" maxlength="15" placeholder="(00) 00000-0000" required />
+            </div>
+
+            <div>
+              <label for="dataNascimento">Data de Nascimento</label>
+              <input type="date" id="dataNascimento" name="dataNascimento" required />
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Endereço -->
+        <fieldset>
+          <legend>Endereço</legend>
+          <div class="inline-group">
+            <div>
+              <label for="endereco">Endereço</label>
+              <input type="text" id="endereco" name="endereco" placeholder="Rua, número, complemento" required />
+            </div>
+
+            <div>
+              <label for="cep">CEP</label>
+              <input type="text" id="cep" name="cep" inputmode="numeric" maxlength="9" placeholder="00000-000" required />
+            </div>
+          </div>
+
+          <div class="inline-group">
+            <div>
+              <label for="cidade">Cidade</label>
+              <input type="text" id="cidade" name="cidade" required />
+            </div>
+
+            <div>
+              <label for="estado">Estado</label>
+              <select id="estado" name="estado" required>
+                <option value="">Selecione</option>
+                <option>AC</option><option>AL</option><option>AP</option><option>AM</option>
+                <option>BA</option><option>CE</option><option>DF</option><option>ES</option>
+                <option>GO</option><option>MA</option><option>MT</option><option>MS</option>
+                <option>MG</option><option>PA</option><option>PB</option><option>PR</option>
+                <option>PE</option><option>PI</option><option>RJ</option><option>RN</option>
+                <option>RS</option><option>RO</option><option>RR</option><option>SC</option>
+                <option>SP</option><option>SE</option><option>TO</option>
+              </select>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Tipo de Participação -->
+        <fieldset>
+          <legend>Tipo de Participação</legend>
+          <div class="inline-group">
+            <label><input type="radio" name="tipo" value="voluntario" required /> Voluntário</label>
+            <label><input type="radio" name="tipo" value="doador" /> Doador</label>
+          </div>
+
+          <label for="mensagem">Mensagem (opcional)</label>
+          <textarea id="mensagem" name="mensagem" rows="4" placeholder="Conte-nos um pouco sobre você..."></textarea>
+        </fieldset>
+
+        <button type="submit" class="btn btn-primario">Enviar Cadastro</button>
+        <div id="feedback" role="alert" aria-live="polite"></div>
+      </form>
+    </section>
+  </main>
+
+  <!-- ============================= -->
+  <!-- RODAPÉ -->
+  <!-- ============================= -->
+  <footer class="site-footer">
+    <p>&copy; 2025 ConectaSocial. Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- ============================= -->
+  <!-- SCRIPTS -->
+  <!-- ============================= -->
+  <script type="module" src="js/app.js" defer></script>
+<script type="module" src="js/app.js" defer></script>
+<script src="js/darkmode-fallback.js" defer></script>
+</body>
+</html>

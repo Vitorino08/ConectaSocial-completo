@@ -1,0 +1,85 @@
+/* =====================================================
+   ConectaSocial - Sistema de Design (Variables)
+   ===================================================== */
+
+:root {
+  /* =====================================================
+     PALETA DE CORES PRINCIPAL
+     ===================================================== */
+  --cor-primaria: #2B6CB0;
+  --cor-primaria-escura: #1A365D;
+
+  --cor-secundaria: #48BB78;
+  --cor-secundaria-escura: #2F855A;
+
+  --cor-fundo: #F7FAFC;
+  --cor-superficie: #FFFFFF;
+  --cor-borda: #E2E8F0;
+
+  --cor-texto: #2D3748;
+  --cor-texto-invertido: #FFFFFF;
+
+  --cor-info: #3182CE;
+  --cor-alerta: #ED8936;
+  --cor-erro: #E53E3E;
+  --cor-sucesso: #38A169;
+
+  /* =====================================================
+     CORES DERIVADAS / AUXILIARES
+     ===================================================== */
+  --cor-sombra: rgba(0, 0, 0, 0.08);
+  --cor-sombra-forte: rgba(0, 0, 0, 0.15);
+  --cor-overlay: rgba(0, 0, 0, 0.3);
+
+  /* =====================================================
+     TIPOGRAFIA
+     ===================================================== */
+  --font-base: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+
+  --fs-h1: 2.5rem;
+  --fs-h2: 2rem;
+  --fs-h3: 1.5rem;
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+
+  /* =====================================================
+     ESPAÇAMENTO / GRID SCALE
+     ===================================================== */
+  --sp-1: 0.5rem;   /* 8px */
+  --sp-2: 1rem;     /* 16px */
+  --sp-3: 1.5rem;   /* 24px */
+  --sp-4: 2rem;     /* 32px */
+  --sp-5: 3rem;     /* 48px */
+  --sp-6: 4rem;     /* 64px */
+
+  /* =====================================================
+     TRANSIÇÕES E RADII
+     ===================================================== */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  --transition: all 0.25s ease-in-out;
+}
+
+/* =====================================================
+   MODO ESCURO (DARK MODE)
+   ===================================================== */
+body.dark-mode {
+  --cor-fundo: #121212;
+  --cor-superficie: #1C1C1C;
+  --cor-primaria: #2B6CB0;
+  --cor-primaria-escura: #0a0a0a;
+
+  --cor-secundaria: #3cc1a0;
+  --cor-secundaria-escura: #2a9d8f;
+
+  --cor-texto: #E0E0E0;
+  --cor-texto-invertido: #FFFFFF;
+  --cor-borda: #2D3748;
+
+  --cor-sombra: rgba(255, 255, 255, 0.05);
+  --cor-sombra-forte: rgba(255, 255, 255, 0.1);
+  --cor-overlay: rgba(0, 0, 0, 0.6);
+}
